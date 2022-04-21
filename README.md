@@ -14,7 +14,7 @@ The `@` path alias can be used to import modules from the `src` folder in the Nu
 
 ## Working on the App
 
-Run `yarn nuxt:dev` and work as you normally would. If you need the full stack running, run `yarn start` which will start up the SST stack. The first time you run this, it will deploy a couple of CloudFormation stacks (one for debugging and one with the actual infrastructure and code). Once you see output like this:
+Run `yarn nuxt:build` followed by `yarn nuxt:dev`, and work as you normally would. If you need the full stack running, run `yarn start` which will start up the SST stack. The first time you run this, it will deploy a couple of CloudFormation stacks (one for debugging and one with the actual infrastructure and code). Once you see output like this:
 
 ```
 Stack dev-sst-vue-web-app
@@ -23,7 +23,7 @@ Stack dev-sst-vue-web-app
     ApiEndpoint: https://xyz.execute-api.us-east-1.amazonaws.com
 ```
 
-you can open that URL to access the Nuxt app. Thanks to the [magic of Serverless Stack](https://docs.serverless-stack.com/live-lambda-development), you can make local code changes and then reload the page. No deployment to AWS is necessary. Of course, keep in mind that any changes to the Nuxt app itself will require you to rebuild the Nuxt app via `yarn nuxt:build`.
+you can open that URL to access the Nuxt app. Thanks to the [magic of Serverless Stack](https://docs.serverless-stack.com/live-lambda-development), you can make local code changes to your stacks or core business logic, and then reload the page. No redeployment to AWS is necessary. Of course, keep in mind that any changes to the Nuxt app itself will require you to kill the `yarn start` process, rebuild via `yarn nuxt:build`, then run `yarn start` again.
 
 ## Build and Deploy
 

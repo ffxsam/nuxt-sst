@@ -1,0 +1,39 @@
+{
+  "name": "sst-vue",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "nuxt"
+  ],
+  "scripts": {
+    "start": "sst start",
+    "build": "sst build",
+    "deploy": "scripts/deploy",
+    "nuxt:dev": "npx nuxi dev nuxt",
+    "nuxt:build": "npx nuxi build nuxt",
+    "lint": "eslint --ext .ts,.js,.vue . nuxt"
+  },
+  "eslintConfig": {
+    "extends": [
+      "serverless-stack"
+    ]
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^9.0.0",
+    "@types/aws-lambda": "^8.10.70",
+    "@types/eslint": "^8",
+    "@types/node": "<15.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "eslint": "^8.13.0",
+    "eslint-plugin-vue": "^8.6.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@sentry/serverless": "^6.19.6",
+    "@serverless-stack/cli": "^1.0.0-beta.7",
+    "@serverless-stack/resources": "^1.0.0-beta.7",
+    "aws-cdk-lib": "2.15.0"
+  },
+  "packageManager": "yarn@3.2.0"
+}

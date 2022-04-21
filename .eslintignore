@@ -1,0 +1,4 @@
+dist
+nuxt/.output
+nuxt/.nuxt
+nuxt/lambda.js

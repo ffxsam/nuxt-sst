@@ -1,0 +1,8 @@
+#!/bin/sh
+set -ex
+
+source .env
+
+npx nuxi build nuxt
+aws s3 sync --delete nuxt/.output/public $CDN_S3_URL
+yarn sst deploy $*

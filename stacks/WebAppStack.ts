@@ -1,24 +1,19 @@
-import * as sst from '@serverless-stack/resources';
+import { Api, Function, StackContext } from '@serverless-stack/resources';
 
-export default class WebAppStack extends sst.Stack {
-  constructor(scope: sst.App, id: string, props?: sst.StackProps) {
-    super(scope, id, props);
+export function WebAppStack({ stack }: StackContext) {
+  const api = new Api(stack, 'Api', {
+    routes: {
+      $default: new Function(stack, 'EntryPointFunc', {
+        handler: 'nuxt/lambda.handler',
+        environment: {
+          NUXT_SOMETHING_SECRET: '', // reference properties in CDK constructs
+        },
+      }),
+    },
+  });
 
-    // Create a HTTP API
-    const api = new sst.Api(this, 'Api', {
-      routes: {
-        $default: new sst.Function(this, 'EntryPointFunc', {
-          handler: 'nuxt/lambda.handler',
-          environment: {
-            NUXT_SOMETHING_SECRET: '', // reference properties in CDK constructs
-          },
-        }),
-      },
-    });
-
-    // Show the endpoint in the output
-    this.addOutputs({
-      ApiEndpoint: api.url,
-    });
-  }
+  // Show the endpoint in the output
+  stack.addOutputs({
+    ApiEndpoint: api.url,
+  });
 }

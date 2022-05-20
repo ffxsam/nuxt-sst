@@ -1,5 +1,5 @@
 import * as sst from '@serverless-stack/resources';
-import WebAppStack from './WebAppStack';
+import { WebAppStack } from './WebAppStack';
 
 export default function main(app: sst.App): void {
   // Set default runtime for all functions
@@ -7,7 +7,7 @@ export default function main(app: sst.App): void {
     runtime: 'nodejs14.x',
   });
 
-  new WebAppStack(app, 'web-app');
+  app.stack(WebAppStack, { stackName: `${app.stage}-${app.name}-web-app` });
 
   // Add more stacks
 }

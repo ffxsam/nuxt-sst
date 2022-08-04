@@ -10,6 +10,6 @@
   },
   "devDependencies": {
     "@vue/eslint-config-typescript": "^10.0.0",
-    "nuxt": "3.0.0-rc.3"
+    "nuxt": "3.0.0-rc.6"
   }
 }
